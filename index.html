@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            margin-bottom: 40px;
+            color: #333;
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 40px;
+        }
+        
+        /* Round red button */
+        .round-red-btn {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #e74c3c;
+            border: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+        
+        .round-red-btn:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
+        }
+        
+        .round-red-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* Square blue button */
+        .square-blue-btn {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            background-color: #3498db;
+            border: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .square-blue-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.5);
+        }
+        
+        .square-blue-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* Click feedback */
+        .click-message {
+            margin-top: 30px;
+            padding: 15px 25px;
+            background-color: #2ecc71;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .click-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <h1>Clickable Buttons</h1>
+    
+    <div class="button-container">
+        <button class="round-red-btn" id="redBtn">Red Button</button>
+        <button class="square-blue-btn" id="blueBtn">Blue Button</button>
+    </div>
+    
+    <div class="click-message" id="message"></div>
+
+    <script>
+        const redBtn = document.getElementById('redBtn');
+        const blueBtn = document.getElementById('blueBtn');
+        const message = document.getElementById('message');
+        
+        function showMessage(text) {
+            message.textContent = text;
+            message.classList.add('show');
+            setTimeout(() => {
+                message.classList.remove('show');
+            }, 2000);
+        }
+        
+        redBtn.addEventListener('click', () => {
+            showMessage('Round red button clicked!');
+            console.log('Red button clicked');
+        });
+        
+        blueBtn.addEventListener('click', () => {
+            showMessage('Square blue button clicked!');
+            console.log('Blue button clicked');
+        });
+    </script>
+</body>
+</html>
